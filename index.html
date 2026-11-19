@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilham Family Shop Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#090909;color:white;
+  font-family:Arial,sans-serif;padding:12px;
+}
+.dashboard{max-width:1450px;margin:auto}
+.header{
+  display:grid;grid-template-columns:1.2fr 1fr 1fr;
+  background:#000;border-bottom:5px solid #741c42;
+  margin-bottom:14px;min-height:100px;
+}
+.head-box{padding:15px;border-right:5px solid #741c42}
+.shop-name{font-size:34px;color:#ff9900;font-family:Georgia}
+.subtitle{color:#168cff;margin-top:8px}
+.head-title{text-align:center;color:#438cff;font-size:19px}
+.head-value{text-align:center;color:#00c66b;font-size:30px;font-weight:bold;margin-top:5px}
+.taka{text-align:center;color:#00d477;font-style:italic;font-size:13px}
+.sections{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:14px;margin-bottom:12px;
+}
+.panel{border:1px solid #aaa;background:#000}
+.panel-title{
+ text-align:center;padding:5px;font-size:20px;
+ background:#656565;color:#ddd;
+}
+.products-title{background:#437f89}
+.cash-title{background:#751c48}
+.cards{display:grid;grid-template-columns:repeat(3,1fr)}
+.card{
+ min-height:94px;padding:10px 7px;
+ border:1px solid #aaa;
+}
+.card:nth-child(3n+1){background:#214d19}
+.card:nth-child(3n+2){background:#541300}
+.card:nth-child(3n){background:#25164e}
+.card-name{color:#58aaff;font-size:15px}
+.card-value{font-size:23px;font-weight:bold;margin-top:7px}
+.green{color:#00c66b}.red{color:red}
+.blue{color:#458cff}.yellow{color:#d6a500}
+.unit{text-align:right;color:#ddd;font-size:12px;font-style:italic}
+.main{
+ display:grid;grid-template-columns: .9fr 1.65fr 1.35fr;
+ gap:10px;
+}
+.stats{display:flex;flex-direction:column;gap:12px}
+.stat{
+ display:grid;grid-template-columns:1.2fr 1fr;
+ border:1px solid #aaa;min-height:38px;
+}
+.stat-name{background:#4c1032;color:#c88aa8;padding:7px}
+.stat-value{text-align:center;color:#ed438b;padding:7px}
+.chart-panel{border:1px solid #aaa;background:#000;padding:12px;min-width:0}
+.chart-title{text-align:center;color:#00c66b;font-size:19px;margin-bottom:7px}
+.chart-sub{text-align:center;color:#cf4590;font-size:13px;margin-bottom:8px}
+.chart-box{height:200px;position:relative}
+.asset-title{color:#438cff}
+@media(max-width:850px){
+ .header{grid-template-columns:1fr}
+ .head-box{border-right:0;border-bottom:2px solid #741c42}
+ .sections{grid-template-columns:1fr}
+ .main{grid-template-columns:1fr}
+ .shop-name{text-align:center}
+ .subtitle{text-align:center}
+}
+@media(max-width:450px){
+ body{padding:6px}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .shop-name{font-size:27px}
+ .card-value{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+<header class="header">
+ <div class="head-box">
+  <div class="shop-name">Ilham Family Shop</div>
+  <div class="subtitle">Chandrakona Bazar, Nakla, Sherpur.</div>
+ </div>
+ <div class="head-box">
+  <div class="head-title">Total Investment:</div>
+  <div class="head-value">৳284,960</div>
+  <div class="taka">Taka</div>
+ </div>
+ <div class="head-box">
+  <div class="head-title">Total Asset:</div>
+  <div class="head-value" style="color:#ff9933">৳285,870</div>
+  <div class="taka">Profit Rate: 14.54%</div>
+ </div>
+</header>
+
+<section class="sections">
+ <div class="panel">
+  <div class="panel-title">Cost</div>
+  <div class="cards">
+   <div class="card"><div class="card-name">Decoration</div><div class="card-value green">৳12,000</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name">Expense</div><div class="card-value red">0</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name">Salary</div><div class="card-value blue">Pending</div><div class="unit">Taka</div></div>
+  </div>
+ </div>
+
+ <div class="panel">
+  <div class="panel-title products-title">Products</div>
+  <div class="cards">
+   <div class="card"><div class="card-name">Purchases</div><div class="card-value green">৳139,541</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name">Sales</div><div class="card-value yellow">৳18,713</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name">Stock</div><div class="card-value blue">৳121,739</div><div class="unit">Taka</div></div>
+  </div>
+ </div>
+
+ <div class="panel">
+  <div class="panel-title cash-title">Cash</div>
+  <div class="cards">
+   <div class="card"><div class="card-name" style="color:#ff42a0">Profit</div><div class="card-value green">৳911</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name" style="color:#ff42a0">Due</div><div class="card-value red">৳79,595</div><div class="unit">Taka</div></div>
+   <div class="card"><div class="card-name" style="color:#ff42a0">Hand Cash</div><div class="card-value blue">৳72,537</div><div class="unit">Taka</div></div>
+  </div>
+ </div>
+</section>
+
+<section class="main">
+ <div class="stats">
+  <div class="stat"><div class="stat-name">Total Products Item</div><div class="stat-value">58</div></div>
+  <div class="stat"><div class="stat-name">Total Customers</div><div class="stat-value">66</div></div>
+  <div class="stat"><div class="stat-name">Total Suppliers</div><div class="stat-value">14</div></div>
+  <div class="stat"><div class="stat-name">Total Investors</div><div class="stat-value">2</div></div>
+  <div class="stat"><div class="stat-name">Total Employees</div><div class="stat-value">Pending</div></div>
+  <div class="stat"><div class="stat-name">Others</div><div class="stat-value">Pending</div></div>
+ </div>
+
+ <div class="chart-panel">
+  <div class="chart-title">Date Wise Profit Earned (Last 7 Days)</div>
+  <div class="chart-sub">Profit Analysis</div>
+  <div class="chart-box">
+   <canvas id="profitChart"></canvas>
+  </div>
+ </div>
+
+ <div class="chart-panel">
+  <div class="chart-title asset-title">Total Asset</div>
+  <div class="chart-sub">Percentage (100%)</div>
+  <div class="chart-box">
+   <canvas id="assetChart"></canvas>
+  </div>
+ </div>
+</section>
+
+</div>
+<script>
+Chart.defaults.color="#aaa";
+new Chart(document.getElementById('profitChart'),{
+ type:'bar',
+ data:{
+  labels:['11-11','12-11','13-11','14-11','15-11','16-11','17-11'],
+  datasets:[{
+   label:'Profit',
+   data:[170,95,127,131,15,206,97],
+   backgroundColor:'#751c48',
+   borderColor:'#a34d78',
+   borderWidth:1,
+   borderRadius:3
+  }]
+ },
+ options:{
+  responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  scales:{
+   y:{beginAtZero:true,grid:{color:'#555'},ticks:{color:'#ffbb00'}},
+   x:{grid:{display:false},ticks:{color:'#ffbb00'}}
+  }
+ }
+});
+
+new Chart(document.getElementById('assetChart'),{
+ type:'doughnut',
+ data:{
+  labels:['Hand Cash','Stock','Due','Decoration'],
+  datasets:[{
+   data:[25.4,42.6,27.8,4.2],
+   backgroundColor:['#28a653','#1259d4','#d13e22','#751c48'],
+   borderWidth:0,
+   hoverOffset:8
+  }]
+ },
+ options:{
+  responsive:true,maintainAspectRatio:false,
+  cutout:'52%',
+  plugins:{
+   legend:{position:'bottom',labels:{color:'#00c66b',padding:12}}
+  }
+ }
+});
+</script>
+</body>
+</html>
